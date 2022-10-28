@@ -1,0 +1,157 @@
+import java.math.BigInteger;
+import java.sql.SQLOutput;
+import java.util.Arrays;
+
+public class Main {
+    //public static void main(String[] args) {
+  /*6 of 49      BigInteger lottery6of49 = new BigInteger("1");
+        BigInteger number = new BigInteger("49");
+        BigInteger minus=new BigInteger("1");
+
+        for(int i=1; i<=6; i++)
+        {
+            lottery6of49=lottery6of49.multiply(number);
+            number=number.subtract(minus);
+        }
+        System.out.println(lottery6of49);
+    */
+      /*5 of 40  BigInteger lottery6of40 = new BigInteger("1");
+        BigInteger number = new BigInteger("40");
+        BigInteger minus=new BigInteger("1");
+
+        for(int i=1; i<=5; i++)
+        {
+            lottery6of40=lottery6of40.multiply(number);
+            number=number.subtract(minus);
+        }
+        System.out.println(lottery6of40); */
+
+       /*problem2 6 0f 49
+        int numbers[]=new int[6];
+        int ok=0;
+        int ind=0;
+        while(ok==0 && ind<6)
+        {
+            double nrrand=Math.random();
+            nrrand=nrrand*100;
+            nrrand= Math.floor(nrrand);
+            int aux=(int) nrrand;
+            if(aux>=1 && aux<=49)
+            {
+                int gasit=0;
+                for(int i=0;i<=ind;i++)
+                {
+
+                    if(aux==numbers[i])
+                    {
+                        gasit=1;
+                        break;
+                    }
+                }
+                if(gasit==0)
+                {
+                    numbers[ind]=aux;
+                    ind++;
+                }
+            }
+
+            if(ind>=6)
+            {
+                ok=1;
+                break;
+            }
+
+        }
+        System.out.println(Arrays.toString(numbers));*/
+         /*problem 2 5 of 40
+        int numbers[]=new int[5];
+        int ok=0;
+        int ind=0;
+        while(ok==0 && ind<5)
+        {
+            double nrrand=Math.random();
+            nrrand=nrrand*100;
+            nrrand= Math.floor(nrrand);
+            int aux=(int) nrrand;
+            if(aux>=1 && aux<=40)
+            {
+                int gasit=0;
+                for(int i=0;i<=ind;i++)
+                {
+
+                    if(aux==numbers[i])
+                    {
+                        gasit=1;
+                        break;
+                    }
+                }
+                if(gasit==0)
+                {
+                    numbers[ind]=aux;
+                    ind++;
+                }
+            }
+
+            if(ind>=5)
+            {
+                ok=1;
+                break;
+            }
+
+        }
+        System.out.println(Arrays.toString(numbers));*/
+
+
+        /* 6.4
+        BigInteger convertedtext= new BigInteger("0");
+        String text="Ana are mere";
+        char a;
+        BigInteger add=new BigInteger("0");
+        for(int i=0;i<text.length();i++) {
+            a=text.charAt(i);
+            if (a == ' ') {
+                 add.equals(0);
+            } else if (a == ',') {
+                add.equals(1);
+            } else if (a == '.') {
+                add.equals(2);
+            } else if (a >= 'A' && a <= 'Z') {
+                add.equals(a-62);
+            } else if (a >= 'a' && a <= 'z') {
+                add.equals(a - 68);
+            }
+            convertedtext = convertedtext.multiply(BigInteger.valueOf(10));
+            convertedtext=convertedtext.add(add);
+
+        }
+        System.out.println(add);
+    }*/
+    
+    //6.5
+    static String chars=" ,.:;?!/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    public static void decode(BigInteger nr){
+        char[] v=new char[100];
+        int i=0;
+        BigInteger k;
+        BigInteger l;
+        while(nr.compareTo(BigInteger.valueOf(0))!=0)
+        {
+            l=nr.mod(BigInteger.valueOf(55));
+            char c=chars.charAt(l.and(BigInteger.valueOf(63)).intValue);
+            v[i]=c;
+            System.out.println(v[i]);
+            i++;
+            nr=nr.divide(BigInteger.valueOf(55));
+        }
+        for(int j =0;j<=i-1;j++){
+            System.out.println(v[j]);
+        }
+    }
+    public static void main(String[] args){
+        BigInteger codee=BigInteger.valueOf(107834);
+        String v="";
+        decode(codee);
+        System.out.println(v);
+    }
+
+}
